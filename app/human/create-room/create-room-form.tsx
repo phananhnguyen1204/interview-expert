@@ -38,7 +38,7 @@ export function CreateRoomForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     //invoke server action to store data to our database
     await createRoomActions({ ...values, createdAt: new Date() });
-    router.push("/");
+    router.push("/human");
   }
 
   return (
