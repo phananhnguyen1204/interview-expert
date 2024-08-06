@@ -4,9 +4,11 @@ import FAQ from "@/components/faq";
 import HowItWorks from "@/components/howitworks";
 import { Info } from "./../components/info";
 import { Button } from "@/components/ui/button";
+import { db } from "@/utils/db";
 import { motion } from "framer-motion";
 
-export default function Home() {
+export default async function Home() {
+  const rooms = await db.query.room.findMany();
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <motion.div
