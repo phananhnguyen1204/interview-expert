@@ -1,4 +1,6 @@
-import { pgTable, serial, text, varchar } from "drizzle-orm/pg-core";
+import { create } from "domain";
+import { sql } from "drizzle-orm";
+import { pgTable, serial, text, uuid, varchar } from "drizzle-orm/pg-core";
 import { boolean, timestamp, primaryKey, integer } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "next-auth/adapters";
 
@@ -89,3 +91,20 @@ export const MockInterview = pgTable("mock_interview", {
   createdAt: varchar("createdAt"),
   mockId: varchar("mockId").notNull(),
 });
+
+export const room = pgTable("room", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .notNull()
+    .primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  description: text("description"),
+  language: text("language"),
+  githubRepo: text("githubRepo"),
+  createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
+});
+
+export type Room = typeof room.$inferSelect;

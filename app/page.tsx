@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
+import { db } from "@/utils/db";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const rooms = await db.query.room.findMany();
   return (
-    <div className="bg-red-50">
-      <Button>Hello world</Button>Home Page
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      {rooms.map((room) => {
+        return <div key={room.id}>{room.name}</div>;
+      })}
+    </main>
   );
 }
