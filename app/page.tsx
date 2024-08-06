@@ -20,6 +20,7 @@ export default async function Home() {
         <div className="absolute inset-0">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-50"
+            //Image by bunny on Freepik
             style={{
               backgroundImage: "url('/assets/background.jpg')",
             }}
