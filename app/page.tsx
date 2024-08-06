@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/utils/db";
 import { motion } from "framer-motion";
 
-export default async function Home() {
-  const rooms = await db.query.room.findMany();
+export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <motion.div
