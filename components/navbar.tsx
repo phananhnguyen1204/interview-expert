@@ -63,9 +63,6 @@ const NavBar: React.FC = () => {
           </svg>
         </button>
       </div>
-      <div className="hidden lg:block">
-        <Header />
-      </div>
 
       <div className={`lg:hidden ${isOpen ? "block" : "hidden"} w-full`}>
         <div className="flex flex-col items-center space-y-4 mt-4">
