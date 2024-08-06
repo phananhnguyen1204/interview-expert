@@ -11,61 +11,62 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-transparent p-4 flex justify-between items-center border-b border-slate-500">
-      <div className="container flex justify-between mx-auto items-center ">
-        <div>
-          <h1>Logo here</h1>
-        </div>
-        <div className=" items-center space-x-6 hidden lg:block">
-          <Link
-            href="/"
-            className="text-lg font-medium text-black hover:text-orange-400"
-          >
-            Home
-          </Link>
-          <Link
-            href="/mock-interview"
-            className="text-lg font-medium text-black hover:text-orange-400"
-          >
-            Mock Interview
-          </Link>
-          <Link
-            href="/code-editor"
-            className="text-lg font-medium text-black hover:text-orange-400"
-          >
-            Code Editor
-          </Link>
-          <Link
-            href="/contact"
-            className="text-lg font-medium text-black hover:text-orange-400"
-          >
-            Contact
-          </Link>
-        </div>
-        <div className="block lg:hidden">
-          <button
-            onClick={toggleMenu}
-            className="text-black focus:outline-none"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              />
-            </svg>
-          </button>
-        </div>
-        <div className="hidden lg:block">
-          <Header />
-        </div>
+    <nav className="bg-transparent p-4 flex justify-between items-center border-b border-slate-500 w-full ">
+      <div className="flex left-0">
+        <a href="/" className="flex mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+          <img src="/logo.png" className="w-auto h-12" alt="Logo" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            Interview Expert
+          </span>
+        </a>
       </div>
+      <div className="hidden lg:flex items-center justify-center space-x-9 flex-1">
+        <Link
+          href="/"
+          className="text-lg font-medium text-black hover:text-orange-400"
+        >
+          Home
+        </Link>
+        <Link
+          href="/mock-interview"
+          className="text-lg font-medium text-black hover:text-orange-400"
+        >
+          Mock Interview
+        </Link>
+        <Link
+          href="/code-editor"
+          className="text-lg font-medium text-black hover:text-orange-400"
+        >
+          Code Editor
+        </Link>
+        <Link
+          href="/contact"
+          className="text-lg font-medium text-black hover:text-orange-400"
+        >
+          Contact
+        </Link>
+      </div>
+      <div className="block lg:hidden">
+        <button onClick={toggleMenu} className="text-black focus:outline-none">
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="hidden lg:block">
+        <Header />
+      </div>
+
       <div className={`lg:hidden ${isOpen ? "block" : "hidden"} w-full`}>
         <div className="flex flex-col items-center space-y-4 mt-4">
           <Link
