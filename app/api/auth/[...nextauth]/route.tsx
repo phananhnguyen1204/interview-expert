@@ -10,6 +10,11 @@ const handler = NextAuth({
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          redirect_uri: "http://localhost:3000/api/auth/callback/google", // Ensure this matches the URI in Google Cloud Console
+        },
+      },
     }),
   ],
 });
