@@ -65,7 +65,10 @@ export function CreateRoomForm() {
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input
+                  placeholder="I'm preparing an interview for a job at Google." 
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 Please describe what you are be coding on.
@@ -82,7 +85,10 @@ export function CreateRoomForm() {
             <FormItem>
               <FormLabel>Github Repo</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input
+                  placeholder="https://github.com/phananhnguyen1204"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 Please put a link to a project you are working on.
@@ -99,7 +105,7 @@ export function CreateRoomForm() {
             <FormItem>
               <FormLabel>Primary Programming Languages</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="typscript, go, next.js, react" {...field} />
               </FormControl>
               <FormDescription>
                 Please list the primary programming languages you are working

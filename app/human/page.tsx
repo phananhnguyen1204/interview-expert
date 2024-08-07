@@ -12,6 +12,8 @@ import {
 import { Room } from "@/utils/schema";
 import { GithubIcon } from "lucide-react";
 import { getHumanRooms } from "@/data-access/human-rooms";
+import { LanguagesList } from "@/components/languages-list";
+import { splitLanguages } from "@/lib/utils";
 
 function RoomCard({ room }: { room: Room }) {
   return (
@@ -20,11 +22,12 @@ function RoomCard({ room }: { room: Room }) {
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col gap-4">
+        <LanguagesList languages={splitLanguages(room?.language || "")} />
         {room.githubRepo && (
           <Link
             href={room.githubRepo}
-            className="flex item-center gap-2"
+            className="flex items-center gap-2"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -35,7 +38,7 @@ function RoomCard({ room }: { room: Room }) {
       </CardContent>
       <CardFooter>
         <Button asChild>
-          <Link href={`/human/rooms/${room.id}`}>Join Room</Link>
+          <Link href={`/human-rooms/${room.id}`}>Join Room</Link>
         </Button>
       </CardFooter>
     </Card>
