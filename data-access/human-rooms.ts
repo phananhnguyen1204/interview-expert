@@ -1,4 +1,6 @@
 import { db } from "@/utils/db";
+import { room } from "@/utils/schema";
+import { eq } from "drizzle-orm";
 import { unstable_noStore } from "next/cache";
 
 /**
@@ -10,4 +12,11 @@ export async function getHumanRooms() {
   unstable_noStore();
   const rooms = await db.query.room.findMany();
   return rooms;
+}
+
+export async function getHumanRoomById(roomId: string) {
+  unstable_noStore();
+  return await db.query.room.findFirst({
+    where: eq(room.id, roomId),
+  });
 }
