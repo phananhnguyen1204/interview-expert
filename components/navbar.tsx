@@ -28,10 +28,10 @@ const NavBar: React.FC = () => {
           Home
         </Link>
         <Link
-          href="mock-interview"
+          href="dashboard"
           className="text-lg font-medium text-black hover:text-orange-400"
         >
-          Mock Interview
+          Dashboard
         </Link>
         <Link
           href="/code-editor"
@@ -76,10 +76,10 @@ const NavBar: React.FC = () => {
             Home
           </Link>
           <Link
-            href="mock-interview"
+            href="dashboard"
             className="text-lg font-medium text-black hover:text-orange-400"
           >
-            Mock Interview
+            Dashboard
           </Link>
           <Link
             href="code-editor"

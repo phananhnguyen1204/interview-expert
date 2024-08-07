@@ -17,7 +17,7 @@ import { splitLanguages } from "@/lib/utils";
 
 function RoomCard({ room }: { room: Room }) {
   return (
-    <Card>
+    <Card className="shadow-md hover:shadow-lg hover:translate-y-2 transition-all cursor-pointer">
       <CardHeader>
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
@@ -50,7 +50,7 @@ export default async function HumanInterviewRoom() {
   return (
     <main className="min-h-screen p-16">
       <div className="flex justify-between w-full items-center mb-12">
-        <h1 className="text-4xl">Find Interview Room</h1>
+        <h1 className="text-4xl font-semibold">Find Interview Room</h1>
         <Button asChild>
           <Link href="/human/create-room">Create Room</Link>
         </Button>
