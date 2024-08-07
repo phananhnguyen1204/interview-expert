@@ -51,7 +51,7 @@ export function CreateRoomForm() {
             <FormItem>
               <FormLabel>Room Name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Google Behavior Interview" {...field} />
               </FormControl>
               <FormDescription>This is your public room name.</FormDescription>
               <FormMessage />
@@ -66,7 +66,7 @@ export function CreateRoomForm() {
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="I'm preparing an interview for a job at Google." 
+                  placeholder="I'm preparing an interview for a job at Google."
                   {...field}
                 />
               </FormControl>
