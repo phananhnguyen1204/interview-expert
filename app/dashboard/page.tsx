@@ -41,7 +41,7 @@ const Dashboard = () => {
             <p>Show AI Rooms Here</p>
           </TabsContent>
           <TabsContent value="human" className="w-screen">
-            <HumanInterviewRoom />
+            <HumanInterviewRoom searchParams={{ search: "" }} />
           </TabsContent>
         </Tabs>
       </div>
