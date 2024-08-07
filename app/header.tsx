@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { LogIn, LogOut } from "lucide-react";
+import { LogIn, LogInIcon, LogOut } from "lucide-react";
 import Image from "next/image";
 
 function AccountDropdown() {
@@ -34,17 +34,10 @@ function AccountDropdown() {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {isLoggedIn ? (
-          <DropdownMenuItem onClick={() => signOut()}>
-            <LogOut className="mr-2" />
-            Sign Out
-          </DropdownMenuItem>
-        ) : (
-          <DropdownMenuItem onClick={() => signIn("google")}>
-            <LogIn className="mr-2" />
-            Sign In
-          </DropdownMenuItem>
-        )}
+        <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+          <LogOut className="mr-2" />
+          Sign Out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -55,7 +48,12 @@ export function Header() {
   return (
     <header>
       <div>
-        <AccountDropdown></AccountDropdown>
+        {session.data && <AccountDropdown></AccountDropdown>}
+        {!session.data && (
+          <Button onClick={() => signIn()} variant="link">
+            <LogInIcon className="mr-2" /> Sign In
+          </Button>
+        )}
       </div>
     </header>
   );
