@@ -1,6 +1,6 @@
 import { db } from "@/utils/db";
 import { room } from "@/utils/schema";
-import { eq } from "drizzle-orm";
+import { eq, like } from "drizzle-orm";
 import { unstable_noStore } from "next/cache";
 
 /**
@@ -8,9 +8,12 @@ import { unstable_noStore } from "next/cache";
  * @returns {Promise<Array<Room>>} - A promise that resolves to an array of Room objects.
  */
 
-export async function getHumanRooms() {
+export async function getHumanRooms(search: string | undefined) {
   unstable_noStore();
-  const rooms = await db.query.room.findMany();
+  const where = search ? like(room.language, `%${search}%`) : undefined;
+  const rooms = await db.query.room.findMany({
+    where,
+  });
   return rooms;
 }
 

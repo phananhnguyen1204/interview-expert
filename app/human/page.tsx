@@ -14,6 +14,7 @@ import { GithubIcon } from "lucide-react";
 import { getHumanRooms } from "@/data-access/human-rooms";
 import { LanguagesList } from "@/components/languages-list";
 import { splitLanguages } from "@/lib/utils";
+import { SearchBar } from "./search-bar";
 
 function RoomCard({ room }: { room: Room }) {
   return (
@@ -45,8 +46,12 @@ function RoomCard({ room }: { room: Room }) {
   );
 }
 
-export default async function HumanInterviewRoom() {
-  const rooms = await getHumanRooms();
+export default async function HumanInterviewRoom({
+  searchParams,
+}: {
+  searchParams: { search: string };
+}) {
+  const rooms = await getHumanRooms(searchParams.search || "");
   return (
     <main className="min-h-screen p-16">
       <div className="flex justify-between w-full items-center mb-12">
@@ -54,6 +59,9 @@ export default async function HumanInterviewRoom() {
         <Button asChild>
           <Link href="/human/create-room">Create Room</Link>
         </Button>
+      </div>
+      <div className="mb-12">
+        <SearchBar />
       </div>
       <div className="grid grid-cols-3 gap-4">
         {rooms.map((room) => {
