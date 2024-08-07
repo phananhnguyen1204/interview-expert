@@ -3,27 +3,57 @@
 import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { LogIn, LogInIcon, LogOut } from "lucide-react";
+import Image from "next/image";
+
+function AccountDropdown() {
+  const session = useSession();
+
+  const isLoggedIn = !!session.data;
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant={"link"}>
+          {" "}
+          <Avatar className="mr-2">
+            <AvatarImage src={session.data?.user?.image ?? ""} />
+          </Avatar>
+          {session.data?.user?.name}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+          <LogOut className="mr-2" />
+          Sign Out
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function Header() {
   const session = useSession();
   return (
     <header>
       <div>
-        {session.data ? (
-          <Button
-            className="bg-orange-400 text-white px-6 py-2 rounded-full w-40 text-lg hover:bg-orange-500"
-            onClick={() => signOut()}
-          >
-            Sign Out
-          </Button>
-        ) : (
-          <Button
-            className="bg-orange-400 text-white px-6 py-2 rounded-full w-fit text-lg hover:bg-orange-500"
-            onClick={() => signIn("google")}
-          >
-            Sign In
+        {session.data && <AccountDropdown></AccountDropdown>}
+        {!session.data && (
+          <Button onClick={() => signIn()} variant="link">
+            <LogInIcon className="mr-2" /> Sign In
           </Button>
         )}
-        {session.data?.user?.name}
       </div>
     </header>
   );
