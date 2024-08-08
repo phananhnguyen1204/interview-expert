@@ -23,6 +23,7 @@ const CodeEditorBlock = () => {
     setLanguage(selectedLanguage);
     setValue(CODE_SNIPPETS[selectedLanguage[0]]);
   };
+  console.log(value);
 
   return (
     <div className="flex">
@@ -30,7 +31,7 @@ const CodeEditorBlock = () => {
         <LanguageSelector language={language} onSelect={onSelect} />
         <Editor
           height="75vh"
-          theme="vs-white"
+          theme="vs-dark"
           language={language[0]}
           defaultValue={CODE_SNIPPETS[language[0]]}
           value={value}

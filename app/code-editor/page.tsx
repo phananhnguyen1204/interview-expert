@@ -3,21 +3,15 @@ import { Box } from "@chakra-ui/react";
 
 const CodeEditor = () => {
   return (
-    <div className="px-6 py-8">
-      <div className="flex flex-row p-2 space-x-2 mb-3">
-        <div>
-          <h1 className="text-2xl font-semibold text-orange-400">Practice</h1>
-          <h1 className="text-3xl font-semibold text-slate-600">Makes</h1>
-          <h1 className="text-4xl font-semibold text-orange-400">Perfect!</h1>
-        </div>
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-            tempora iusto optio! Aliquam dolor fuga nulla atque placeat, ullam
-            dolorem et, odit dolore delectus id, illum accusantium earum
-            blanditiis. Dolore.
-          </p>
-        </div>
+    <div className="min-h-screen p-12">
+      <div className="flex flex-col items-center p-6 h-fit w-full text-center mb-20">
+        <h2 className="text-6xl font-extrabold p-5 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+          Practice Make Perfect
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit tempora
+          iusto optio! Aliquam dolor fuga nulla atque placeat, ullam dolorem et,
+        </p>
       </div>
       <CodeEditorBlock />
     </div>
