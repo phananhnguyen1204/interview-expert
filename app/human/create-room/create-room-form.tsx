@@ -51,7 +51,11 @@ export function CreateRoomForm() {
             <FormItem>
               <FormLabel>Room Name</FormLabel>
               <FormControl>
-                <Input placeholder="Google Behavior Interview" {...field} />
+                <Input
+                  className="w-[85%]"
+                  placeholder="Google Behavior Interview"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>This is your public room name.</FormDescription>
               <FormMessage />
@@ -66,6 +70,7 @@ export function CreateRoomForm() {
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Input
+                  className="w-[85%]"
                   placeholder="I'm preparing an interview for a job at Google."
                   {...field}
                 />
@@ -86,6 +91,7 @@ export function CreateRoomForm() {
               <FormLabel>Github Repo</FormLabel>
               <FormControl>
                 <Input
+                  className="w-[85%]"
                   placeholder="https://github.com/phananhnguyen1204"
                   {...field}
                 />
@@ -105,7 +111,11 @@ export function CreateRoomForm() {
             <FormItem>
               <FormLabel>Primary Programming Languages</FormLabel>
               <FormControl>
-                <Input placeholder="typscript, go, next.js, react" {...field} />
+                <Input
+                  className="w-[85%]"
+                  placeholder="typscript, go, next.js, react"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 Please list the primary programming languages you are working

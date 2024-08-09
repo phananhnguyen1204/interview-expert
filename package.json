@@ -38,6 +38,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "crisp-sdk-web": "^1.0.25",
     "drizzle-orm": "^0.32.2",
     "framed": "^0.1.0",
     "framer-motion": "^11.3.23",

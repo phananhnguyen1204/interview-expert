@@ -5,6 +5,9 @@ import { Providers } from "./provider";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import NextTopLoader from "nextjs-toploader";
+import { CrispProvider } from "./crisp-provider";
+import { useEffect } from "react";
+import { Crisp } from "crisp-sdk-web";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <CrispProvider></CrispProvider>
       <body className={inter.className}>
         <Providers>
           <NextTopLoader />

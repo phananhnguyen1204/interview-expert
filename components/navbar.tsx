@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
           Home
         </Link>
         <Link
-          href="dashboard"
+          href="/dashboard"
           className="text-lg font-medium text-black hover:text-orange-400"
         >
           Dashboard
