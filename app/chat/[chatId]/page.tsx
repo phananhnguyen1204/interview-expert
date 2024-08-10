@@ -1,4 +1,5 @@
 import ChatSideBar from "@/components/ChatSideBar";
+import PDFViewer from "@/components/PDFViewer";
 import { db } from "@/utils/db";
 import { chats } from "@/utils/schema";
 import { eq } from "drizzle-orm";
@@ -35,8 +36,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         </div>
         {/* pdf viewer */}
         <div className="min-h-screen p-4 oveflow-scroll flex-[5]">
-          PDF Viewer
-          {/* <PDFViewer pdf_url={currentChat?.pdfUrl || ""} /> */}
+          <PDFViewer pdf_url={currentChat?.pdfUrl || ""} />
         </div>
         {/* chat component */}
         <div className="flex-[3] border-l-4 border-l-slate-200">
