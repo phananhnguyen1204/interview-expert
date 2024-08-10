@@ -116,7 +116,7 @@ export const room = pgTable("room", {
   createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
 });
 
-export const chats = pgTable("chat", {
+export const chats = pgTable("chats", {
   id: serial("id").primaryKey(),
   pdfName: text("pdf_name").notNull(),
   pdfUrl: text("pdf_url").notNull(),
@@ -124,6 +124,8 @@ export const chats = pgTable("chat", {
   userId: varchar("user_id", { length: 256 }).notNull(),
   fileKey: text("file_key").notNull(),
 });
+
+export type DrizzleChat = typeof chats.$inferSelect;
 
 export const messages = pgTable("message", {
   id: serial("id").primaryKey(),

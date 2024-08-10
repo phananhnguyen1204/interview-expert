@@ -1,3 +1,4 @@
+//this will only run on the server side
 import { S3 } from "@aws-sdk/client-s3";
 import fs from "fs";
 export async function downloadFromS3(file_key: string): Promise<string> {
@@ -6,8 +7,8 @@ export async function downloadFromS3(file_key: string): Promise<string> {
       const s3 = new S3({
         region: "us-east-2",
         credentials: {
-          accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID!,
-          secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY!,
+          accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY!,
         },
       });
       const params = {
@@ -15,8 +16,10 @@ export async function downloadFromS3(file_key: string): Promise<string> {
         Key: file_key,
       };
 
+      //get object from s3 bucket
+      //this object will contain information about the pdf
       const obj = await s3.getObject(params);
-      const file_name = `/tmp/elliott${Date.now().toString()}.pdf`;
+      const file_name = `/Users/phananhnguyen/Desktop/Coding/interview-expert/tmp/pdf/${Date.now().toString()}.pdf`;
 
       if (obj.Body instanceof require("stream").Readable) {
         // AWS-SDK v3 has some issues with their typescript definitions, but this works
