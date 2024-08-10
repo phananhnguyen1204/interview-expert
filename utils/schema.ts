@@ -1,8 +1,17 @@
 import { create } from "domain";
 import { sql } from "drizzle-orm";
-import { pgTable, serial, text, uuid, varchar } from "drizzle-orm/pg-core";
+import {
+  pgEnum,
+  pgTable,
+  serial,
+  text,
+  uuid,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { boolean, timestamp, primaryKey, integer } from "drizzle-orm/pg-core";
-import type { AdapterAccount } from "next-auth/adapters";
+import { AdapterAccount } from "next-auth/adapters";
+
+export const userSystemEnum = pgEnum("user_system_enum", ["system", "user"]);
 
 export const users = pgTable("user", {
   id: text("id")
@@ -105,6 +114,28 @@ export const room = pgTable("room", {
   language: text("language"),
   githubRepo: text("githubRepo"),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
+});
+
+export const chats = pgTable("chats", {
+  id: serial("id").primaryKey(),
+  pdfName: text("pdf_name").notNull(),
+  pdfUrl: text("pdf_url").notNull(),
+  createAt: timestamp("create_at").notNull().defaultNow(),
+  userId: varchar("user_id", { length: 256 }).notNull(),
+  fileKey: text("file_key").notNull(),
+});
+
+export type DrizzleChat = typeof chats.$inferSelect;
+
+export const messages = pgTable("message", {
+  id: serial("id").primaryKey(),
+  //one to many relationship
+  chatId: integer("chat_id")
+    .references(() => chats.id)
+    .notNull(),
+  content: text("content").notNull(),
+  createAt: timestamp("create_at").notNull().defaultNow(),
+  role: userSystemEnum("role").notNull().default("user"),
 });
 
 export type Room = typeof room.$inferSelect;

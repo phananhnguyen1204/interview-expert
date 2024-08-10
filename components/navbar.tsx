@@ -40,6 +40,12 @@ const NavBar: React.FC = () => {
           Code Editor
         </Link>
         <Link
+          href="/chat-pdf"
+          className="text-lg font-medium text-black hover:text-orange-400"
+        >
+          Chat PDF
+        </Link>
+        <Link
           href="/contact"
           className="text-lg font-medium text-black hover:text-orange-400"
         >
