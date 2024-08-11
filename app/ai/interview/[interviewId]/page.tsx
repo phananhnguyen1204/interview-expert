@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import Webcam from "react-webcam";
 import { BellRing, WebcamIcon } from "lucide-react";
 import { Button } from "@mui/material";
+import Link from "next/link";
 
 interface Params {
   interviewId: string;
@@ -99,9 +100,11 @@ const AIInterview = ({ params }: { params: Params }) => {
             </div>
             <div>
               <div>
-                <Button className="bg-orange-400 text-white px-6 py-2 rounded-md w-fit text-md hover:bg-orange-500">
-                  Start Interview
-                </Button>
+                <Link href={"/ai/interview/" + params.interviewId + "/start"}>
+                  <Button className="bg-orange-400 text-white px-6 py-2 rounded-md w-fit text-md hover:bg-orange-500">
+                    Start Interview
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

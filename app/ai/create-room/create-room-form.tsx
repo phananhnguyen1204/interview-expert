@@ -70,8 +70,11 @@ const CreateRoomForm = () => {
     //reorganize the json response
     const MockJsonResponse = result.response
       .text()
-      .replace("```json", "")
-      .replace("```", "")
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .replace(/\n/g, "")
+      .replace(/\\n/g, "")
+      .replace(/\r/g, "")
       .trim();
     setLoading(false);
     setJsonResponse(MockJsonResponse);
