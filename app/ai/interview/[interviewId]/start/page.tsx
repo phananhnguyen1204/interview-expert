@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { eq } from "drizzle-orm";
 import Questions from "@/components/Questions";
 import RecordAnswer from "@/components/RecordAnswer";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Params {
   interviewId: string;
@@ -40,7 +42,6 @@ const AIStartInterview = ({ params }: { params: Params }) => {
       .select()
       .from(MockInterview)
       .where(eq(MockInterview.mockId, params.interviewId));
-    console.log(result[0]);
 
     if (result.length > 0) {
       try {
@@ -62,7 +63,6 @@ const AIStartInterview = ({ params }: { params: Params }) => {
 
         // Parse the cleaned JSON string
         const jsonMockResponse: [] = JSON.parse(jsonString);
-        console.log(jsonMockResponse);
 
         // Set state with parsed JSON data
         setInterviewData(result[0] as InterviewData);
@@ -76,11 +76,38 @@ const AIStartInterview = ({ params }: { params: Params }) => {
   return (
     <div className="p-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <Questions
+        <div>
+          <Questions
+            mockQuestions={mockQuestions}
+            activeQuestionIndex={activeQuestionIndex}
+          />
+          <div className="flex flex-row gap-3 justify-end">
+            {activeQuestionIndex > 0 && (
+              <Button
+                onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}
+              >
+                Previous Question
+              </Button>
+            )}
+            {activeQuestionIndex != mockQuestions?.length - 1 && (
+              <Button
+                onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}
+              >
+                Next Question
+              </Button>
+            )}
+            <Link href={"/ai/interview/" + interviewData?.mockId + "/feedback"}>
+              {activeQuestionIndex == mockQuestions?.length - 1 && (
+                <Button>End Interview</Button>
+              )}
+            </Link>
+          </div>
+        </div>
+        <RecordAnswer
           mockQuestions={mockQuestions}
           activeQuestionIndex={activeQuestionIndex}
-        />
-        <RecordAnswer />
+          interviewData={interviewData}
+        />{" "}
       </div>
     </div>
   );
