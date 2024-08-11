@@ -20,7 +20,7 @@ import { MockInterview } from "@/utils/schema";
 // import { getSession } from "@/lib/auth";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   role: z.string().min(2, {
