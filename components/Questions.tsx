@@ -16,9 +16,9 @@ const Questions = ({ mockQuestions, activeQuestionIndex }) => {
           mockQuestions.map((question: string, index: number) => (
             <div key={index}>
               <h2
-                className={`p-2 bg-secondary rounded-full text-md md:text-sm sm:text-sm text-center cursor-pointer ${
-                  activeQuestionIndex === index && "bg-orange-500 text-white"
-                }`}
+                className={`p-2 rounded-full text-md md:text-sm sm:text-sm text-center cursor-pointer ${
+                  activeQuestionIndex == index && "bg-green-500 text-white"
+                } ${activeQuestionIndex != index && "bg-secondary"}`}
               >
                 Question #{index + 1}
               </h2>

@@ -101,6 +101,18 @@ export const MockInterview = pgTable("mock_interview", {
   mockId: varchar("mockId").notNull(),
 });
 
+export const UserAnswer = pgTable("userAnswer", {
+  id: serial("id").primaryKey(),
+  mockIdRef: varchar("mockId").notNull(),
+  question: varchar("question").notNull(),
+  correctAns: text("correctAns"),
+  userAns: text("userAns"),
+  feedback: text("feedback"),
+  rating: varchar("rating"),
+  createdBy: varchar("createdBy").notNull(),
+  createdAt: varchar("createdAt"),
+});
+
 export const room = pgTable("room", {
   id: uuid("id")
     .default(sql`gen_random_uuid()`)
