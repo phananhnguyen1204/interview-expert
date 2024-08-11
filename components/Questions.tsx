@@ -1,0 +1,54 @@
+import { Lightbulb, Volume2Icon } from "lucide-react";
+
+const Questions = ({ mockQuestions, activeQuestionIndex }) => {
+  const textToSpeech = (text) => {
+    if ("speechSynthesis" in window) {
+      const speech = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(speech);
+    } else {
+      alert("Sorry, your browser does not support text to speech");
+    }
+  };
+  return (
+    <div className="p-5 my-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {mockQuestions &&
+          mockQuestions.map((question: string, index: number) => (
+            <div key={index}>
+              <h2
+                className={`p-2 bg-secondary rounded-full text-md md:text-sm sm:text-sm text-center cursor-pointer ${
+                  activeQuestionIndex === index && "bg-orange-500 text-white"
+                }`}
+              >
+                Question #{index + 1}
+              </h2>
+            </div>
+          ))}
+      </div>
+
+      <h2 className="mt-10 my-5 text-md md:text-lg">
+        {mockQuestions[activeQuestionIndex]?.question}
+        <Volume2Icon
+          className="cursor-pointer"
+          onClick={() =>
+            textToSpeech(mockQuestions[activeQuestionIndex]?.question)
+          }
+        />
+      </h2>
+      <div className="border rounded-lg p-5 bg-orange-100 my-10">
+        <h2 className="flex gap-2 items-center">
+          <Lightbulb />
+          <strong>Notes:</strong>
+        </h2>
+        <h2 className="text-sm text-black my-2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ut nam
+          excepturi corporis vero unde earum dolores non ratione dolorem
+          quibusdam alias nisi enim debitis eaque optio, maxime perferendis
+          soluta.
+        </h2>
+      </div>
+    </div>
+  );
+};
+
+export default Questions;
