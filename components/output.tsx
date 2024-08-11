@@ -50,7 +50,7 @@ const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
           {output.length > 0 ? (
             output.map((line, index) => <p key={index}>{line}</p>)
           ) : (
-            <p>Click "Run Code" to see the output here...</p>
+            <p>Click Run Code to see the output here...</p>
           )}
         </div>
       </div>
