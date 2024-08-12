@@ -21,6 +21,8 @@ import { MockInterview } from "@/utils/schema";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/lib/auth";
 
 const formSchema = z.object({
   role: z.string().min(2, {
@@ -36,7 +38,7 @@ const formSchema = z.object({
 
 const CreateRoomForm = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [JsonResponse, setJsonResponse] = useState([]);
+  const [JsonResponse, setJsonResponse] = useState<string>("");
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,6 +51,7 @@ const CreateRoomForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    const session = await getServerSession(authConfig);
     // const sessions = await getSession();
 
     // if (!sessions) {
@@ -89,7 +92,7 @@ const CreateRoomForm = () => {
           jobPosition: values.role,
           jobDescription: values.description,
           jobExperience: values.experience,
-          createdBy: "6b67e75e-ee67-4528-a653-3d696cedc40b",
+          createdBy: session?.user?.id as string,
           createdAt: moment().format("DD-MM-yyyy"),
         })
         .returning({ mockId: MockInterview.mockId });
