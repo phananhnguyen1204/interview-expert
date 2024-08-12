@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
@@ -17,12 +19,10 @@ import {
 import { chatSession } from "@/utils/GeminiAIModal";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
-// import { getSession } from "@/lib/auth";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/lib/auth";
+import { useSession } from "next-auth/react";
 
 const formSchema = z.object({
   role: z.string().min(2, {
@@ -32,7 +32,7 @@ const formSchema = z.object({
     message: "Description must be at least 10 characters.",
   }),
   experience: z.string().min(1, {
-    message: "Experience must be at least 1 characters.",
+    message: "Experience must be at least 1 character.",
   }),
 });
 
@@ -40,6 +40,7 @@ const CreateRoomForm = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [JsonResponse, setJsonResponse] = useState<string>("");
   const router = useRouter();
+  const { data: session } = useSession(); // Use useSession hook
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,58 +52,62 @@ const CreateRoomForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const session = await getServerSession(authConfig);
-    // const sessions = await getSession();
-
-    // if (!sessions) {
-    //   throw new Error("Unauthorized. You must be logged in to create a room.");
-    // }
+    if (!session) {
+      console.error("Unauthorized. You must be logged in to create a room.");
+      return;
+    }
 
     setLoading(true);
 
-    //set the prompt
+    // Set the prompt
     const InputPrompt = `
-        Job position: ${values.role}, 
-        Job Description: ${values.description}, 
-        Years of Experience: ${values.experience}. 
-        Based on this, give us ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions and answers in JSON format.
-      `;
+      Job position: ${values.role}, 
+      Job Description: ${values.description}, 
+      Years of Experience: ${values.experience}. 
+      Based on this, give us ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions and answers in JSON format.
+    `;
 
-    const result = await chatSession.sendMessage(InputPrompt);
+    try {
+      const result = await chatSession.sendMessage(InputPrompt);
 
-    //reorganize the json response
-    const MockJsonResponse = result.response
-      .text()
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .replace(/\n/g, "")
-      .replace(/\\n/g, "")
-      .replace(/\r/g, "")
-      .trim();
-    setLoading(false);
-    setJsonResponse(MockJsonResponse);
+      // Reorganize the JSON response
+      const MockJsonResponse = result.response
+        .text()
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .replace(/\n/g, "")
+        .replace(/\\n/g, "")
+        .replace(/\r/g, "")
+        .trim();
 
-    //insert into db
-    if (MockJsonResponse) {
-      const resp = await db
-        .insert(MockInterview)
-        .values({
-          mockId: uuidv4(),
-          jsonMockResp: MockJsonResponse,
-          jobPosition: values.role,
-          jobDescription: values.description,
-          jobExperience: values.experience,
-          createdBy: session?.user?.id as string,
-          createdAt: moment().format("DD-MM-yyyy"),
-        })
-        .returning({ mockId: MockInterview.mockId });
+      setLoading(false);
+      setJsonResponse(MockJsonResponse);
 
-      //if successful, go to the interview room with the id
-      if (resp) {
-        router.push("/ai/interview/" + resp[0]?.mockId);
+      // Insert into db
+      if (MockJsonResponse) {
+        const resp = await db
+          .insert(MockInterview)
+          .values({
+            mockId: uuidv4(),
+            jsonMockResp: MockJsonResponse,
+            jobPosition: values.role,
+            jobDescription: values.description,
+            jobExperience: values.experience,
+            createdBy: session.user.id as string,
+            createdAt: moment().format("DD-MM-yyyy"),
+          })
+          .returning({ mockId: MockInterview.mockId });
+
+        // If successful, go to the interview room with the id
+        if (resp) {
+          router.push("/ai/interview/" + resp[0]?.mockId);
+        }
+      } else {
+        console.log("Error in generating mock interview response");
       }
-    } else {
-      console.log("Error is generating mock interview response");
+    } catch (error) {
+      console.error("Failed to generate interview questions:", error);
+      setLoading(false);
     }
   }
 
