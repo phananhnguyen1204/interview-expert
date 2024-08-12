@@ -1,9 +1,11 @@
 import ChatComponent from "@/components/ChatComponent";
 import ChatSideBar from "@/components/ChatSideBar";
 import PDFViewer from "@/components/PDFViewer";
+import { authConfig } from "@/lib/auth";
 import { db } from "@/utils/db";
 import { chats } from "@/utils/schema";
 import { eq } from "drizzle-orm";
+import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -14,11 +16,12 @@ type Props = {
 };
 
 const ChatPage = async ({ params: { chatId } }: Props) => {
-  // const { userId } = await auth();
-  // if (!userId) {
-  //   return redirect("/sign-in");
-  // }
-  const userId = "bc837796-abd8-477e-acbf-23de6d4fb843";
+  const session = await getServerSession(authConfig);
+  console.log(session);
+  const userId = session?.user?.id;
+  if (!userId) {
+    return redirect("/sign-in");
+  }
   const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
   if (!_chats) {
     return redirect("/chat-pdf");
