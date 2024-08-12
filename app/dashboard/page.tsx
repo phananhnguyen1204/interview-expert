@@ -5,13 +5,14 @@ import AIHumanForm from "@/components/ai-or-human-form";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Lottie from "lottie-react";
-import animationData from "../lotties/dashboard.json";
+import humanInterview from "../lotties/human-interview.json";
+import createRoom from "../lotties/create-room.json";
+import aiInterview from "../lotties/ai-interview.json";
 import Link from "next/link";
 
 const Dashboard = () => {
@@ -29,41 +30,41 @@ const Dashboard = () => {
         </p>
       </div>
       <div className="flex flex-row justify-between w-full max-w-6xl gap-10">
-        <div className="flex flex-col items-center w-1/2">
+        <div className="flex flex-col items-center justify-center w-1/2">
           <div className="text-center p-3 mb-5">
             <h1 className="text-3xl font-semibold">Create a Room</h1>
           </div>
           <Card className="shadow-md hover:shadow-lg transition-all cursor-pointer hover:translate-y-1 flex-grow flex flex-col justify-between">
             <CardContent>
-              <div className="flex justify-center items-center mb-4">
+              <div className="flex justify-center items-center mb-4 mt-10">
                 <Lottie
-                  animationData={animationData}
+                  animationData={createRoom}
                   className="max-w-xs"
                   loop={true}
                 />
               </div>
               <div className="text-center">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Voluptatibus amet ipsam nemo architecto commodi cupiditate
-                  quo, labore et quam quidem perferendis iure ratione tempora
-                  accusamus earum. Quos unde suscipit ex!
+                  Start your interview preparation by creating your own practice
+                  room. Customize the session to either AI interview or
+                  peer-to-peer interview.
                 </p>
               </div>
               <div>
                 <ul className="grid gap-2 py-4">
                   <li>
                     <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                    Make collaboration seamless with built-in code review tools.
+                    Choose the interview type that you prefer.
                   </li>
                   <li>
                     <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                    Automate your workflow with continuous integration and
-                    delivery.
+                    Invite peers or use AI to simulate a realistic interview
+                    environment.
                   </li>
                   <li>
                     <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                    Deploy to the cloud with a single click and scale with ease.
+                    Manage your practice sessions with built-in tools for
+                    scheduling, tracking progress, and reviewing past sessions.
                   </li>
                 </ul>
               </div>
@@ -85,23 +86,23 @@ const Dashboard = () => {
               <CardContent className="flex flex-row mb-4">
                 <div className="w-1/3 flex justify-center items-center">
                   <Lottie
-                    animationData={animationData}
+                    animationData={aiInterview}
                     className="max-w-full"
                     loop={true}
                   />
                 </div>
                 <div className="w-2/3 pl-3">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Voluptatibus amet ipsam nemo architecto commodi cupiditate
-                    quo, labore et quam quidem perferendis iure ratione tempora
-                    accusamus earum. Quos unde suscipit ex!
+                    Jump into an AI-powered interview session designed to
+                    challenge and refine your skills. Our advanced AI simulates
+                    a realistic interview, providing instant feedback on your
+                    answers, helping you improve with every response.
                   </p>
                 </div>
               </CardContent>
               <CardFooter>
                 <Button>
-                  <Link href="/ai">Join AI Interview</Link>
+                  <Link href="/ai/create-room">Join AI Interview</Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -112,17 +113,17 @@ const Dashboard = () => {
               <CardContent className="flex flex-row mb-4">
                 <div className="w-1/3 flex justify-center items-center">
                   <Lottie
-                    animationData={animationData}
+                    animationData={humanInterview}
                     className="max-w-full"
                     loop={true}
                   />
                 </div>
                 <div className="w-2/3 pl-3">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Voluptatibus amet ipsam nemo architecto commodi cupiditate
-                    quo, labore et quam quidem perferendis iure ratione tempora
-                    accusamus earum. Quos unde suscipit ex!
+                    Practice with real people by joining a peer-to-peer
+                    interview session! Experience a live interview environment,
+                    exchange feedback, and learn from others as you prepare for
+                    your next big opportunity.
                   </p>
                 </div>
               </CardContent>

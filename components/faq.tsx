@@ -36,59 +36,75 @@ const FAQ: React.FC = () => {
         </div>
         <div className="space-y-4">
           <Collapsible>
-            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-gray-100 rounded-md dark:bg-gray-800">
-              <h3 className="text-lg font-medium">What is your product?</h3>
+            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-orange-200 rounded-md dark:bg-gray-800">
+              <h3 className="text-lg font-medium">
+                How does the AI interview simulation work?
+              </h3>
               <PlusIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
             </CollapsibleTrigger>
             <CollapsibleContent className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
               <p className="text-gray-500 dark:text-gray-400">
-                Our product is a powerful tool that helps you streamline your
-                workflow and increase productivity. It's designed to simplify
-                complex tasks and automate repetitive processes, so you can
-                focus on what really matters.
+                The AI interview simulation on Interview Expert uses advanced
+                machine learning models to replicate a realistic interview
+                experience. The AI asks you questions based on the job role
+                you’re targeting and provides instant feedback on your
+                responses, helping you improve your answers and overall
+                performance.
               </p>
             </CollapsibleContent>
           </Collapsible>
           <Collapsible>
-            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-gray-100 rounded-md dark:bg-gray-800">
-              <h3 className="text-lg font-medium">How much does it cost?</h3>
+            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-orange-200 rounded-md dark:bg-gray-800">
+              <h3 className="text-lg font-medium">
+                Can I review my interview performance later?
+              </h3>
               <PlusIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
             </CollapsibleTrigger>
             <CollapsibleContent className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
               <p className="text-gray-500 dark:text-gray-400">
-                We offer a range of pricing plans to suit different needs and
-                budgets. Our basic plan starts at $9 per month, and we also have
-                enterprise-level solutions for larger teams. You can check our
-                pricing page for more details.
+                Yes! After completing an interview, you can review detailed
+                feedback at any time. Whether you’ve had a peer-to-peer
+                interview or an AI interview, all your responses, feedback, and
+                suggestions for improvement are saved in your account for you to
+                revisit and work on.
               </p>
             </CollapsibleContent>
           </Collapsible>
           <Collapsible>
-            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-gray-100 rounded-md dark:bg-gray-800">
-              <h3 className="text-lg font-medium">How do I get started?</h3>
+            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-orange-200  rounded-md dark:bg-gray-800">
+              <h3 className="text-lg font-medium">
+                How do peer-to-peer interviews work?
+              </h3>
               <PlusIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
             </CollapsibleTrigger>
             <CollapsibleContent className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
               <p className="text-gray-500 dark:text-gray-400">
-                Getting started is easy! Simply sign up for an account on our
-                website and you'll be guided through the setup process. We have
-                comprehensive documentation and a friendly support team to help
-                you every step of the way.
+                Peer-to-peer interviews on Interview Expert allow you to
+                practice with other users on the platform. You can choose to
+                either be the interviewer or the interviewee, providing a
+                valuable opportunity to understand both sides of the interview
+                process. After the session, you can exchange feedback with your
+                peer to further enhance your skills.
               </p>
             </CollapsibleContent>
           </Collapsible>
           <Collapsible>
-            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-gray-100 rounded-md dark:bg-gray-800">
-              <h3 className="text-lg font-medium">Do you offer any support?</h3>
+            <CollapsibleTrigger className="flex items-center justify-between w-full px-6 py-4 bg-orange-200 rounded-md dark:bg-gray-800">
+              <h3 className="text-lg font-medium">
+                What makes Interview Expert different from other interview
+                preparation platforms?
+              </h3>
               <PlusIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
             </CollapsibleTrigger>
             <CollapsibleContent className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
               <p className="text-gray-500 dark:text-gray-400">
-                Absolutely! We have a dedicated support team available to assist
-                you with any questions or issues you may have. You can reach us
-                via email, phone, or our online chat. We also have a
-                comprehensive knowledge base with helpful articles and
-                tutorials.
+                Interview Expert stands out by offering both peer-to-peer and
+                AI-driven interview simulations, allowing you to tailor your
+                practice experience to your specific needs. Our AI provides
+                instant feedback, while peer-to-peer interviews let you
+                experience real human interaction. Additionally, our detailed
+                feedback and performance tracking help you continuously improve
+                your interview skills.
               </p>
             </CollapsibleContent>
           </Collapsible>

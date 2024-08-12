@@ -8,9 +8,11 @@ const CodeEditor = () => {
         <h2 className="text-6xl font-extrabold p-5 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
           Practice Make Perfect
         </h2>
-        <p className="text-gray-500 dark:text-gray-400 mt-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit tempora
-          iusto optio! Aliquam dolor fuga nulla atque placeat, ullam dolorem et,
+        <p className="text-gray-500 dark:text-gray-400 mt-4 p-3">
+          Hone your coding skills with our interactive code editor. Whether
+          you're preparing for technical interviews or just looking to sharpen
+          your abilities, our platform offers the perfect environment to
+          practice and improve.
         </p>
       </div>
       <CodeEditorBlock />

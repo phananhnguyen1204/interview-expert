@@ -86,23 +86,26 @@ const AIInterview = ({ params }: { params: Params }) => {
                 {interviewData?.jobExperience}
               </h2>
             </div>
-            <div className="p-5 border rounded-lg border-slate-500 bg-red-100">
-              <h2 className="gap-2 items-center text-red-600">
+            <div className="p-5 border rounded-lg border-slate-500 bg-red-100 space-y-3">
+              <h2 className="gap-2 items-center text-red-600 text-lg font-medium flex flex-row">
                 <BellRing />
                 <strong>Some Reminders!</strong>
               </h2>
               <h2>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                nemo necessitatibus molestiae inventore excepturi quasi quas
-                quaerat nostrum pariatur modi quae laboriosam beatae nesciunt
-                voluptatibus ducimus, laudantium non eaque possimus.
+                Before you start your mock AI interview, please ensure that your
+                webcam and microphone are enabled. This allows the AI to better
+                simulate a real-life interview experience by analyzing your body
+                language and vocal tone. Make sure you are in a quiet
+                environment with good lighting to get the most accurate
+                feedback. Remember, this is a practice session, so feel free to
+                take your time and treat it as you would a real interview.
               </h2>
             </div>
             <div>
-              <div>
+              <div className="bg-orange-400 rounded-md w-fit text-md hover:bg-orange-500 p-1">
                 <Link href={"/ai/interview/" + params.interviewId + "/start"}>
-                  <Button className="bg-orange-400 text-white px-6 py-2 rounded-md w-fit text-md hover:bg-orange-500">
-                    Start Interview
+                  <Button>
+                    <p className="text-white">Start Interview</p>
                   </Button>
                 </Link>
               </div>
