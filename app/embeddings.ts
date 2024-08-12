@@ -12,7 +12,6 @@ export async function getEmbeddings(text: string) {
     const result = await model.embedContent(text.replace(/\n/g, " "));
     const embedding = result.embedding;
     return embedding.values;
-    console.log(embedding.values);
   } catch (error) {
     console.error("Error generating embedding from Gemini:", error);
     throw error;
