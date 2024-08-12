@@ -26,16 +26,12 @@ export async function getMatchesFromEmbeddings(
 
 //we need to get the namespace, so we dont fetch the information from other pdf
 export async function getContext(query: string, fileKey: string) {
-  console.log("query", query);
   const queryEmbeddings = await getEmbeddings(query);
-  console.log("queryEmbeddings", queryEmbeddings);
   const matches = await getMatchesFromEmbeddings(queryEmbeddings, fileKey);
-  console.log("matches", matches);
 
   const qualifyingDocs = matches.filter(
     (match) => match.score && match.score > 0.4
   );
-  console.log("qualifyingDocs", qualifyingDocs);
 
   type Metadata = {
     text: string;
@@ -43,7 +39,6 @@ export async function getContext(query: string, fileKey: string) {
   };
 
   let docs = qualifyingDocs.map((match) => (match.metadata as Metadata).text);
-  console.log("docs", docs);
   // 5 vectors
   return docs.join("\n").substring(0, 3000);
 }
