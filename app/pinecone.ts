@@ -11,7 +11,6 @@ import {
 } from "@pinecone-database/doc-splitter";
 import { getEmbeddings } from "./embeddings";
 import md5 from "md5";
-import { Vector } from "@pinecone-database/pinecone/dist/pinecone-generated-ts-fetch/data";
 import { convertToAscii } from "@/lib/utils";
 
 export const getPineconeClient = () => {
@@ -53,22 +52,12 @@ export async function loadS3IntoPinecone(fileKey: string) {
   const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
   console.log("inserting vectors into pinecone");
-  await namespace.upsert(
-    vectors.map((vector) => ({
-      ...vector,
-      metadata: {
-        id: "",
-        values: [],
-        text: "",
-        pageNumber: 0,
-      },
-    }))
-  );
+  await namespace.upsert(vectors);
 
   return documents[0];
 }
 
-async function embedDocument(doc: Document): Promise<Vector> {
+async function embedDocument(doc: Document) {
   try {
     const embeddings = await getEmbeddings(doc.pageContent);
     const hash = md5(doc.pageContent);
@@ -77,12 +66,10 @@ async function embedDocument(doc: Document): Promise<Vector> {
       id: hash,
       values: embeddings,
       metadata: {
-        id: "", // Add a default value for the id property
-        values: [], // Add a default value for the values property
         text: doc.metadata.text,
         pageNumber: doc.metadata.pageNumber,
-      } as PineconeRecord,
-    };
+      },
+    } as PineconeRecord;
   } catch (error) {
     console.log("error embedding document", error);
     throw error;

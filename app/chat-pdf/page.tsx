@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "../FileUpload";
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/lib/auth";
 
-export default function ChatPDFPage() {
+export default async function ChatPDFPage() {
+  // const session = await getServerSession(authConfig);
+  // console.log(session);
   return (
     <div className="w-screen min-h-screen">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

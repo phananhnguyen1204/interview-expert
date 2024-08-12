@@ -24,7 +24,6 @@ function AccountDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant={"link"}>
-          {" "}
           <Avatar className="mr-2">
             <AvatarImage src={session.data?.user?.image ?? ""} />
           </Avatar>
