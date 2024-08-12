@@ -2,10 +2,24 @@ import { Button } from "@/components/ui/button";
 import { FileUpload } from "../FileUpload";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/lib/auth";
+import { db } from "@/utils/db";
+import { chats } from "@/utils/schema";
+import { eq } from "drizzle-orm";
+import Link from "next/link";
+import { ChevronLast } from "lucide-react";
 
 export default async function ChatPDFPage() {
-  // const session = await getServerSession(authConfig);
-  // console.log(session);
+  const session = await getServerSession(authConfig);
+  let firstChat;
+  if (session) {
+    firstChat = await db
+      .select()
+      .from(chats)
+      .where(eq(chats.userId, session?.user?.id));
+    if (firstChat) {
+      firstChat = firstChat[0];
+    }
+  }
   return (
     <div className="w-screen min-h-screen">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -21,7 +35,13 @@ export default async function ChatPDFPage() {
             understand your own PDF files with Interview Expert
           </p>
           <div className="flex mt-5">
-            <Button>Go to Chats</Button>
+            {session && firstChat && (
+              <>
+                <Link href={`/chat/${firstChat.id}`}>
+                  <Button className="flex gap-1">Go to chats &rarr;</Button>
+                </Link>
+              </>
+            )}
           </div>
 
           <div className="w-full mt-4">

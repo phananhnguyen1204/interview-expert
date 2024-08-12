@@ -16,15 +16,10 @@ export async function downloadFromS3(file_key: string): Promise<string> {
         Key: file_key,
       };
 
-      //get object from s3 bucket
-      //this object will contain information about the pdf
       const obj = await s3.getObject(params);
       const file_name = `/Users/phananhnguyen/Desktop/Coding/interview-expert/tmp/pdf/${Date.now().toString()}.pdf`;
 
       if (obj.Body instanceof require("stream").Readable) {
-        // AWS-SDK v3 has some issues with their typescript definitions, but this works
-        // https://github.com/aws/aws-sdk-js-v3/issues/843
-        //open the writable stream and write the file
         const file = fs.createWriteStream(file_name);
         file.on("open", function (fd) {
           // @ts-ignore
