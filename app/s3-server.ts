@@ -27,7 +27,7 @@ export async function downloadFromS3(file_key: string): Promise<string> {
             return resolve(file_name);
           });
         });
-        // obj.Body?.pipe(fs.createWriteStream(file_name));
+
       }
     } catch (error) {
       console.error(error);
@@ -36,5 +36,3 @@ export async function downloadFromS3(file_key: string): Promise<string> {
     }
   });
 }
-
-// downloadFromS3("uploads/1693568801787chongzhisheng_resume.pdf");

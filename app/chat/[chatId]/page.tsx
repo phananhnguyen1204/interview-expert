@@ -17,7 +17,6 @@ type Props = {
 
 const ChatPage = async ({ params: { chatId } }: Props) => {
   const session = await getServerSession(authConfig);
-  console.log(session);
   const userId = session?.user?.id;
   if (!userId) {
     return redirect("/sign-in");

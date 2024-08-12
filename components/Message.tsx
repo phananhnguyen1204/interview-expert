@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Message } from "ai/react";
-import { Loader2 } from "lucide-react";
+import { Loader2, User2, Bot } from "lucide-react";
 import React from "react";
+import Markdown from "./Markdown";
 
 type Props = {
   isLoading: boolean;
@@ -19,7 +20,7 @@ const MessageList = ({ messages, isLoading }: Props) => {
   if (!messages) return <></>;
   return (
     <div className="flex flex-col gap-2 px-4">
-      {messages.map((message) => {
+      {messages.map((message, index) => {
         return (
           <div
             key={message.id}
@@ -36,7 +37,7 @@ const MessageList = ({ messages, isLoading }: Props) => {
                 }
               )}
             >
-              <p>{message.content}</p>
+              <Markdown text={message.content} />
             </div>
           </div>
         );
