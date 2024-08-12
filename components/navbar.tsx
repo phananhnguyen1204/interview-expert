@@ -11,7 +11,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-transparent p-4 flex justify-between items-center border-b border-slate-500 w-full ">
+    <nav className="bg-transparent p-4 flex justify-between items-center border-b border-slate-500 w-full">
       <div className="flex left-0">
         <a href="/" className="flex mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
           <img src="/logo.png" className="w-auto h-12" alt="Logo" />
@@ -45,36 +45,55 @@ const NavBar: React.FC = () => {
         >
           Chat PDF
         </Link>
-        <Link
-          href="/contact"
-          className="text-lg font-medium text-black hover:text-orange-400"
-        >
-          Contact
-        </Link>
       </div>
       <div className="block lg:hidden">
-        <button onClick={toggleMenu} className="text-black focus:outline-none">
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {!isOpen && (
+          <button
+            onClick={toggleMenu}
+            className="text-black focus:outline-none"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-            />
-          </svg>
-        </button>
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              />
+            </svg>
+          </button>
+        )}
       </div>
       <div className="hidden lg:block">
         <Header />
       </div>
 
       <div className={`lg:hidden ${isOpen ? "block" : "hidden"} w-full`}>
-        <div className="flex flex-col items-center space-y-4 mt-4">
+        <div className="flex flex-col items-center space-y-4 mt-4 relative">
+          {isOpen && (
+            <button
+              onClick={toggleMenu}
+              className="absolute top-2 left-2 text-black focus:outline-none"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          )}
           <Link
             href="/"
             className="text-lg font-medium text-black hover:text-orange-400"
@@ -82,22 +101,22 @@ const NavBar: React.FC = () => {
             Home
           </Link>
           <Link
-            href="dashboard"
+            href="/dashboard"
             className="text-lg font-medium text-black hover:text-orange-400"
           >
             Dashboard
           </Link>
           <Link
-            href="code-editor"
+            href="/code-editor"
             className="text-lg font-medium text-black hover:text-orange-400"
           >
             Code Editor
           </Link>
           <Link
-            href="contact"
+            href="/chat-pdf"
             className="text-lg font-medium text-black hover:text-orange-400"
           >
-            Contact
+            Chat PDF
           </Link>
           <div>
             <Header />

@@ -112,7 +112,7 @@ const CreateRoomForm = () => {
           experience
         </h2>
       </div>
-      <div className="p-3 mt-2">
+      <div className="p-3">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField

@@ -17,7 +17,7 @@ const Questions = ({ mockQuestions, activeQuestionIndex }) => {
             <div key={index}>
               <h2
                 className={`p-2 rounded-full text-md md:text-sm sm:text-sm text-center cursor-pointer ${
-                  activeQuestionIndex == index && "bg-green-500 text-white"
+                  activeQuestionIndex == index && "bg-orange-400 text-white"
                 } ${activeQuestionIndex != index && "bg-secondary"}`}
               >
                 Question #{index + 1}
@@ -41,10 +41,12 @@ const Questions = ({ mockQuestions, activeQuestionIndex }) => {
           <strong>Notes:</strong>
         </h2>
         <h2 className="text-sm text-black my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ut nam
-          excepturi corporis vero unde earum dolores non ratione dolorem
-          quibusdam alias nisi enim debitis eaque optio, maxime perferendis
-          soluta.
+          Remember to speak clearly and stay focused on the question. This is
+          your opportunity to showcase your skills and experience. Take a moment
+          to organize your thoughts before responding. If you need to pause and
+          think, that's okay—just as it would be in a real interview. Keep your
+          answers concise but informative, highlighting key achievements and
+          relevant experiences.
         </h2>
       </div>
     </div>
