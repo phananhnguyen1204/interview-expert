@@ -8,9 +8,9 @@ In today's competitive job market, college students need to be more prepared tha
 
 ## Main Features & How to Use 👍
 
-### 1. Sign Up / Log In ✍️
-- Start your journey by creating an account. It's quick, easy, and gives you access to a suite of tools designed to make you interview-ready.
-  
+### 1. Chat PDF 🗣️📄
+- Analyze technical documents, research papers, or any other PDFs by chatting with them. This tool helps you understand complex content and prepares you to discuss these documents in an interview setting.
+
 ### 2. Choose Your Interview Type 🎤
 - **Peer-to-Peer Interview**: Connect with other students and practice interviews in real-time, gaining valuable experience and feedback from peers.
 - **AI-Powered Interview**: Simulate a real interview experience with our AI, which provides instant analysis and feedback on your performance.
@@ -18,10 +18,7 @@ In today's competitive job market, college students need to be more prepared tha
 ### 3. Code Editor 💻
 - Practice coding problems directly in our integrated code editor. Get comfortable with solving problems in a timed environment, similar to what you'd experience in technical interviews.
 
-### 4. Chat PDF 🗣️📄
-- Analyze technical documents, research papers, or any other PDFs by chatting with them. This tool helps you understand complex content and prepares you to discuss these documents in an interview setting.
-
-### 5. Get Feedback and Improve 📈
+### 4. Get Feedback and Improve 📈
 - After completing your mock interview, receive detailed feedback that highlights your strengths and areas for improvement. Use this to refine your approach and improve with every practice session.
 
 ## How We Built It 💪
