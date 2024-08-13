@@ -31,9 +31,7 @@ In today's competitive job market, college students need to be more prepared tha
 
 ## Challenges We Ran Into 🥺
 
-- **Time Zones**: Coordinating across different time zones was a challenge, but we managed to maintain regular communication and meet deadlines.
 - **AI Integration**: Ensuring the AI provided relevant and constructive feedback required extensive training and fine-tuning.
-- **Real-time Code Editor**: Integrating a real-time, collaborative code editor that could handle multiple users was a complex task, but crucial for the platform's success.
 
 ## Accomplishments We're Proud Of 🥰
 
