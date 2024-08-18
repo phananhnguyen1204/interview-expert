@@ -85,7 +85,7 @@ Before you begin, ensure you have the following installed:
 If you haven't already cloned the repository, run the following command:
 
 ```bash
-git clone https://github.com/your-username/interview-expert.git
+git clone https://github.com/phananhnguyen1204/interview-expert.git
 ```
 
 Then navigate into the project directory:
