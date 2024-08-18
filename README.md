@@ -20,7 +20,6 @@ In today's competitive job market, college students need to be more prepared tha
 
 ### 3. Code Editor 💻
 - Practice coding problems directly in our integrated code editor. Get comfortable with solving problems in a timed environment, similar to what you'd experience in technical interviews.
-- 
 <img width="700" alt="Screenshot 2024-08-12 at 9 54 39 PM" src="https://github.com/user-attachments/assets/e685e9f6-0a3b-4650-a0e8-494b2e013b16">
 
 ### 4. Get Feedback and Improve 📈
