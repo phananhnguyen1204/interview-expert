@@ -29,11 +29,11 @@ In today's competitive job market, college students need to be more prepared tha
 
 ## How We Built It 💪
 
-- **Frontend**: React, Next.js
-- **Backend**: Node.js, Express
+- **Frontend**: React, Next.js, TailwindCSS, ShadCN
+- **Backend**: Node.js, Next.js API
 - **Database**: PostgreSQL
-- **APIs**: Gemini API (for AI-powered interviews), Pinecone
-- **Authentication**: Clerk for secure user management
+- **AI**: Gemini API (for AI-powered interviews), Langchain, Pinecone
+- **Authentication**: NextAuth, Google Identity API
 
 ## Challenges We Ran Into 🥺
 
