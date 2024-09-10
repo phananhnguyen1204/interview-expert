@@ -61,13 +61,6 @@ In today's competitive job market, college students need to be more prepared tha
 
 Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for detailed information on how to contribute to this project.
 
-## Team 🧑‍🤝‍🧑
-
-| S.No. | Name               | GitHub Username :octocat:  |
-|-------|--------------------|----------------------------|
-| 1     | Khanh Ha Nguyen    | @KhanhHa26                 |
-| 2     | Phan Anh Nguyen    | @phananhnguyen1204         |
-
 ## How to Run the Code
 
 Follow these steps to get the Interview Expert platform up and running on your local machine.
